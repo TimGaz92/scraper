@@ -1,0 +1,32 @@
+#mainTitle{
+color: lightgreen;
+font-style: bold;
+text-orientation: center;
+text-align: center;
+}
+body{
+	background-color: black;
+}
+#subTitle{
+color: lightgreen;
+font-style: bold;
+text-orientation: center;
+text-align: center;
+}
+#dropdownMenu1{
+font-style: bold;
+font-size: large;
+}
+#instructions{
+background-color: grey;
+}
+.instructions-text{
+color: black;
+text-align: right;
+}
+.indicator{
+color: lightgreen;
+font-style: bold;
+
+}
+

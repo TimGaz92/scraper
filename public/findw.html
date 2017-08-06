@@ -1,16 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./style.css">
+
+
 	<title>move to results </title>
 		<h1 id="mainTitle">The Archer's Paradox</h1>
 		<h2 id="subTitle">The full listing for news from the wonderful world of archery</h2>
 		<hr>
 </head>
 <body>
-<h3>You're veiwing news from the World Archery News page:</h3>
-<form method="get" action="/resultso">
-    <button type="submit">Continue?</button>
+<h3  class="indicator">You're veiwing news from the World Archery News page:</h3>
+<div class="col-md-2">
+	
+</div>
+
+<div class="col-md-1">
+<form method="get" action="/resultsworld">
+    <button class= "btn btn-success" type="submit">Continue?</button>
 </form>
+</div>
+
+<div class="col-md-1">
+<form method="get" action="/">
+    <button  class= "btn btn-danger" type="submit">Home</button>
+</form>
+</div>
+
+
 
 
 </body>

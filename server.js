@@ -11,6 +11,7 @@ mongoose.Promise = Promise;
 
 var app = express();
  app.use(logger("dev"));
+ app.use(express.static(__dirname + '/public'));
 
 var databaseUrl = "scraper";
 var collections = ["scrapedData"];
@@ -50,10 +51,10 @@ app.get("/findred", function(req, res) {
 app.get("/findworld", function(req, res) {
   res.sendFile(path.join(__dirname, "public/findw.html"));
   // res.send("scraping https://worldarchery.org/news")
-  request("https://worldarchery.org/news", function(error, response, html) {
+  request("http://www.teamusa.org/usa-archery/news/features", function(error, response, html) {
       var $ = cheerio.load(html);
       var results = [];
-      $("p.title").each(function(i, element) {
+      $("div.col-xs-12").each(function(i, element) {
       var title = $(element).text();
       var link = $(element).children().attr("href");
         results.push({
@@ -66,7 +67,7 @@ app.get("/findworld", function(req, res) {
   });
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//extra route to find another site - don't knpo what yet
+//reddit olympic archery route 
 app.get("/findolympicred", function(req, res) {
   res.sendFile(path.join(__dirname, "public/findo.html"));
   // res.send("scraping https://www.reddit.com/r/archery")
