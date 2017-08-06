@@ -91,12 +91,13 @@ app.get("/findolympicred", function(req, res) {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //route to display the results  - reddit archery
 app.get("/results", function(req, res){
+   res.sendFile(path.join(__dirname, "public/results.html"));
 	  db.scrapedData.find({}, function(error, found) {
     if (error) {
       console.log(error);
     }
     else {
-      res.send(found);
+      res.send(found); //change this from a res.json to a regular db write to page - repete for all
     }
   });		
 });
@@ -104,7 +105,7 @@ app.get("/results", function(req, res){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //olympic archery reddit  results
 app.get("/resultso", function(req, res){
-  // res.sendFile(path.join(__dirname, "public/resultso.html"));
+  res.sendFile(path.join(__dirname, "public/resultso.html"));
     db.scrapedDataOlympicRed.find({}, function(error, found) {
     if (error) {
       console.log(error);
@@ -117,7 +118,7 @@ app.get("/resultso", function(req, res){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //world archery results route 
 app.get("/resultsworld", function(req, res){
-    // res.sendFile(path.join(__dirname, "public/resultsw.html"));
+    res.sendFile(path.join(__dirname, "public/resultsw.html"));
     db.scrapedDataWorld.find({}, function(error, found) {
     if (error) {
       console.log(error);

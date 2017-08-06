@@ -27,6 +27,8 @@ text-align: right;
 .indicator{
 color: lightgreen;
 font-style: bold;
-
+}
+.resultsDiv{
+	background-color: grey;
 }
 
