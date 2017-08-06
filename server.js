@@ -5,6 +5,9 @@ var mongojs = require("mongojs");
 var path = require("path");
 var request = require("request");
 var cheerio = require("cheerio");
+var logger = require("morgan");
+var mongoose = require("mongoose");
+mongoose.Promise = Promise;
 
 var app = express();
 
@@ -25,7 +28,6 @@ app.get("/", function(req, res) {
 app.get("/findred", function(req, res) {
 	res.send("scraping https://www.reddit.com/r/archery")
 	request("https://www.reddit.com/r/archery", function(error, response, html) {
-    //https://worldarchery.org/news
   		var $ = cheerio.load(html);
   		var results = [];
   		$("p.title").each(function(i, element) {
@@ -37,12 +39,13 @@ app.get("/findred", function(req, res) {
     		});
   		});
   	console.log(results);
+    console.log("test log----------------------------------------------------");
   	db.scrapedData.insert(results)
 	});
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-app.get("/find", function(req, res) {
+app.get("/findworld", function(req, res) {
   res.send("scraping https://worldarchery.org/news")
   request("https://worldarchery.org/news", function(error, response, html) {
     //https://worldarchery.org/news

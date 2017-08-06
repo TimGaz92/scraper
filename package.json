@@ -13,6 +13,8 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.15.3",
-    "mongojs": "^2.4.0"
+    "mongojs": "^2.4.0",
+    "mongoose": "^4.11.5",
+    "morgan": "^1.8.2"
   }
 }
