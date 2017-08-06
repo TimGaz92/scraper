@@ -4,11 +4,17 @@ console.log("reddit/OlympicArchery logic loaded");
 
 //call to db
 function getResults(){
-	$.getJSON("/results", function(found) {
-    for (var i = 0; i < found.length; i++) {
-      $("#resultsDiv").prepend(found[i].title + "<br>"+ found[i].link);
-      console.log("data" + found.title);
-    }
-  });
+$.ajax({
+       type: "GET",
+        url: "http://localhost:3000/results",
+         contentType: "application/json; charset=utf-8",
+           dataType: "json",                        
+            success: function (response) {
+              console.log("success");
+            },
+            error: function (response){
+             console.log("failed");
+            }
+            });
 }
 getResults();
