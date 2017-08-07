@@ -38,7 +38,28 @@
  <span class="instructions-text"> The next page will allow you to either confirm your choice of news source, or return to the homepage and select a new source. </span>
 </div>
 <div class="col-md-2"></div>
+<button class="btn btn-success" id="view">view results</button>
+
+<div class="col-md-8" id="resultsMainDiv"></div>
 
 
+
+
+<script type="text/javascript">
+  $('#view').on("click", function(){
+  console.log("btn clicked");
+ $.getJSON("/results", function(found) {
+    console.log(found);
+      for (var i = 0; i < found.length; i++) {
+        $("#resultsMainDiv").prepend(found[i].title + "<br>"+ found[i].link + '<hr>');
+        console.log("data" + found.title);
+    }
+  });
+});
+  
+</script>
 </body>
+
+
+
 </html>

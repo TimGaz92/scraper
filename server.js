@@ -28,7 +28,7 @@ app.get("/", function(req, res) {
 
 //this is the finder route for the archery sub-reddit
 app.get("/findred", function(req, res) {
-  res.sendFile(path.join(__dirname, "public/find.html"));
+  // res.sendFile(path.join(__dirname, "public/find.html"));
 	// res.send("scraping https://www.reddit.com/r/archery")
 	request("https://www.reddit.com/r/archery", function(error, response, html) {
   		var $ = cheerio.load(html);
@@ -91,17 +91,18 @@ app.get("/findolympicred", function(req, res) {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //route to display the results  - reddit archery
 app.get("/results", function(req, res){
-   res.sendFile(path.join(__dirname, "public/results.html"));
+   // res.sendFile(path.join(__dirname, "public/results.html"));
 	  db.scrapedData.find({}, function(error, found) {
     if (error) {
       console.log(error);
     }
     else {
-      res.send(found); //change this from a res.json to a regular db write to page - repete for all
+      console.log(found);
+      res.json(found); //change this from a res.json to a regular db write to page - repete for all
     }
   });		
 });
-
+//change the html pages to handlebars and use res.send
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //olympic archery reddit  results
 app.get("/resultso", function(req, res){

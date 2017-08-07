@@ -31,4 +31,12 @@ font-style: bold;
 .resultsDiv{
 	background-color: grey;
 }
-
+#resultsMainDiv{
+	display: inline-block;
+	float: center;
+	margin: auto;
+	border: 15%;
+	padding-left: 20%; 
+	color: white;
+	align-self: center;
+}
