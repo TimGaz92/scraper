@@ -40,3 +40,14 @@ font-style: bold;
 	color: white;
 	align-self: center;
 }
+#redditA{
+	color: green;
+	font-weight: bold;
+}
+#world{
+	color: red;
+	font-weight: bold;
+}
+#olympic{
+	font-weight: bold;
+}

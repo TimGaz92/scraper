@@ -22,9 +22,9 @@
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    <li><a href="/findred">Reddit Archery</a></li>
-    <li><a href="/findworld">World Archery - broken</a></li>
-    <li><a href="/findolympicred">Olympic Archery</a></li>
+    <li><a id="redditA" href="/findred">Reddit Archery</a></li>
+    <li><a id="world" href="/findworld">World Archery - broken</a></li>
+    <li><a id="olympic" href="/findolympicred">Olympic Archery</a></li>
 <!--     <li role="separator" class="divider"></li>
     <li><a href="#">Separated link</a></li> -->
   </ul>
@@ -38,15 +38,37 @@
  <span class="instructions-text"> The next page will allow you to either confirm your choice of news source, or return to the homepage and select a new source. </span>
 </div>
 <div class="col-md-2"></div>
-<button class="btn btn-success" id="view">view results</button>
-
+  <div id="btnsDiv" class="col-md-2">
+  <button class="btn btn-success" id="view">view results</button>
+  <button class="btn btn-default" id="viewolypmic">view results</button>
+  <button class="btn btn-danger" id="viewworld">view results</button>
+  </div>
 <div class="col-md-8" id="resultsMainDiv"></div>
 
 
 
 
 <script type="text/javascript">
-  $('#view').on("click", function(){
+$('#resultsMainDiv').empty();
+// $('#btnsDiv').empty();
+$('#view').hide();
+$('#viewolypmic').hide();
+$('#viewworld').hide();
+
+$('#redditA').on("click", function(){
+  $('#view').show();
+});
+$('#olympic').on("click", function(){
+  $('#viewolypmic').show();
+});
+$('#world').on("click", function(){
+  $('#viewworld').show();
+});
+
+
+
+
+$('#view').on("click", function(){
   console.log("btn clicked");
  $.getJSON("/results", function(found) {
     console.log(found);

@@ -49,7 +49,7 @@ app.get("/findred", function(req, res) {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //route to find the world archery news page 
 app.get("/findworld", function(req, res) {
-  res.sendFile(path.join(__dirname, "public/findw.html"));
+  // res.sendFile(path.join(__dirname, "public/findw.html"));
   // res.send("scraping https://worldarchery.org/news")
   request("http://www.teamusa.org/usa-archery/news/features", function(error, response, html) {
       var $ = cheerio.load(html);
@@ -69,7 +69,7 @@ app.get("/findworld", function(req, res) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //reddit olympic archery route 
 app.get("/findolympicred", function(req, res) {
-  res.sendFile(path.join(__dirname, "public/findo.html"));
+  // res.sendFile(path.join(__dirname, "public/findo.html"));
   // res.send("scraping https://www.reddit.com/r/archery")
   request("https://www.reddit.com/r/olympicarchery/", function(error, response, html) {
       var $ = cheerio.load(html);
@@ -106,7 +106,7 @@ app.get("/results", function(req, res){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //olympic archery reddit  results
 app.get("/resultso", function(req, res){
-  res.sendFile(path.join(__dirname, "public/resultso.html"));
+  // res.sendFile(path.join(__dirname, "public/resultso.html"));
     db.scrapedDataOlympicRed.find({}, function(error, found) {
     if (error) {
       console.log(error);
@@ -119,7 +119,7 @@ app.get("/resultso", function(req, res){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //world archery results route 
 app.get("/resultsworld", function(req, res){
-    res.sendFile(path.join(__dirname, "public/resultsw.html"));
+    // res.sendFile(path.join(__dirname, "public/resultsw.html"));
     db.scrapedDataWorld.find({}, function(error, found) {
     if (error) {
       console.log(error);
