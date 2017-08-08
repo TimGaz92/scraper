@@ -21,9 +21,9 @@
     Click here to select a news source!
     <span class="caret"></span>
   </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" id="dropDown">
     <li><a id="redditA" href="/findred">Reddit Archery</a></li>
-    <li><a id="world" href="/findworld">World Archery - broken</a></li>
+    <li><a id="world" href="/findworld">World Archery</a></li>
     <li><a id="olympic" href="/findolympicred">Olympic Archery</a></li>
 <!--     <li role="separator" class="divider"></li>
     <li><a href="#">Separated link</a></li> -->
@@ -49,28 +49,62 @@
 
 
 <script type="text/javascript">
-$('#resultsMainDiv').empty();
-// $('#btnsDiv').empty();
+
 $('#view').hide();
 $('#viewolypmic').hide();
 $('#viewworld').hide();
 
+
+$('#dropDown').on('click', function(){
+$('#resultsMainDiv').empty();
+});
+
+
+
+
 $('#redditA').on("click", function(){
+  $('#resultsMainDiv').empty();
   $('#view').show();
+  $('#viewolypmic').hide();
+  $('#viewworld').hide();
 });
 $('#olympic').on("click", function(){
   $('#viewolypmic').show();
+  $('#view').hide();
+  $('#viewworld').hide();
 });
 $('#world').on("click", function(){
   $('#viewworld').show();
+  $('#view').hide();
+  $('#viewolypmic').hide();
 });
-
-
 
 
 $('#view').on("click", function(){
   console.log("btn clicked");
  $.getJSON("/results", function(found) {
+    console.log(found);
+      for (var i = 0; i < found.length; i++) {
+        $("#resultsMainDiv").prepend(found[i].title + "<br>"+ found[i].link + '<hr>');
+        console.log("data" + found.title);
+    }
+  });
+});
+
+$('#viewolypmic').on("click", function(){
+  console.log("btn clicked");
+ $.getJSON("/resultso", function(found) {
+    console.log(found);
+      for (var i = 0; i < found.length; i++) {
+        $("#resultsMainDiv").prepend(found[i].title + "<br>"+ found[i].link + '<hr>');
+        console.log("data" + found.title);
+    }
+  });
+});
+
+$('#viewworld').on("click", function(){
+  console.log("btn clicked");
+ $.getJSON("/resultsworld", function(found) {
     console.log(found);
       for (var i = 0; i < found.length; i++) {
         $("#resultsMainDiv").prepend(found[i].title + "<br>"+ found[i].link + '<hr>');

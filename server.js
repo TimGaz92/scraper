@@ -25,11 +25,9 @@ db.on("error", function(error) {
 app.get("/", function(req, res) {
   	res.sendFile(path.join(__dirname, "public/index.html"));
 });
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //this is the finder route for the archery sub-reddit
 app.get("/findred", function(req, res) {
-  // res.sendFile(path.join(__dirname, "public/find.html"));
-	// res.send("scraping https://www.reddit.com/r/archery")
 	request("https://www.reddit.com/r/archery", function(error, response, html) {
   		var $ = cheerio.load(html);
   		var results = [];
@@ -49,8 +47,6 @@ app.get("/findred", function(req, res) {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //route to find the world archery news page 
 app.get("/findworld", function(req, res) {
-  // res.sendFile(path.join(__dirname, "public/findw.html"));
-  // res.send("scraping https://worldarchery.org/news")
   request("http://www.teamusa.org/usa-archery/news/features", function(error, response, html) {
       var $ = cheerio.load(html);
       var results = [];
@@ -69,8 +65,6 @@ app.get("/findworld", function(req, res) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //reddit olympic archery route 
 app.get("/findolympicred", function(req, res) {
-  // res.sendFile(path.join(__dirname, "public/findo.html"));
-  // res.send("scraping https://www.reddit.com/r/archery")
   request("https://www.reddit.com/r/olympicarchery/", function(error, response, html) {
       var $ = cheerio.load(html);
       var results = [];
@@ -98,15 +92,13 @@ app.get("/results", function(req, res){
     }
     else {
       console.log(found);
-      res.json(found); //change this from a res.json to a regular db write to page - repete for all
+      res.json(found); 
     }
   });		
 });
-//change the html pages to handlebars and use res.send
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //olympic archery reddit  results
 app.get("/resultso", function(req, res){
-  // res.sendFile(path.join(__dirname, "public/resultso.html"));
     db.scrapedDataOlympicRed.find({}, function(error, found) {
     if (error) {
       console.log(error);
